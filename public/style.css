@@ -324,6 +324,7 @@ a {
 
 .project > h2 {
   font-size: 14px;
+  margin-bottom: 22px;
 }
 
 .upload > h2,
@@ -564,6 +565,77 @@ a {
   font-size: 1rem;
 }
 
+.project-card {
+  width: 375px;
+  min-height: 150px;
+  height: fit-content;
+  border: 0.5px solid #999999;
+  border-radius: 4px;
+  margin-bottom: 50px;
+}
+
+.company {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 5px;
+  border-bottom: 1px solid #999999;
+}
+
+.box {
+  background-color: rgb(170, 154, 154);
+  width: 20px;
+  height: 20px;
+}
+
+.chead {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.upicon {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+.project-list > ul {
+  margin: 0;
+  padding: 0;
+}
+
+.list-item {
+  display: flex;
+  padding: 5px 0px;
+  padding-left: 20px;
+  border-bottom: 1px solid #717171;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list-item > li {
+  font-size: 12px;
+  font-weight: 400;
+  list-style: none;
+  text-align: initial;
+}
+
+.closeIcon {
+  border: none;
+  background-color: white;
+  cursor: pointer;
+  padding-right: 14px;
+}
+.add-new {
+  border: none;
+  background-color: white;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 12px;
+}
+
 @media only screen and (max-width: 690px) {
   .parent {
     min-height: 500px;
@@ -665,7 +737,7 @@ a {
   }
 
   .box {
-    background-color: rgb(150, 148, 148);
+    background-color: rgb(170, 154, 154);
     margin-top: 50px;
     width: 20px;
     height: 20px;
@@ -777,5 +849,13 @@ a {
 
   .title {
     width: 200px;
+  }
+
+  .project-card {
+    width: 250px;
+  }
+
+  .box {
+    margin-top: 0;
   }
 }
