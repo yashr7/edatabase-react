@@ -10,11 +10,52 @@ function ProjectDetails() {
   const backPage = () => {
     navigate("/uploads");
   };
+
+  const addItem = () => {};
+
+  const deleteItem = () => {};
+
   return (
     <div>
       <div class="project">
         <h2>Enter your project details</h2>
         <div class="projects">
+          <div className="project-card">
+            <div className="company">
+              <div className="box"></div>
+              <span className="chead">Accenture Projects</span>
+              <button className="upicon">
+                <KeyboardArrowUp />
+              </button>
+            </div>
+            <div className="project-list">
+              <ul>
+                <div className="list-item">
+                  <li>Project Title</li>
+                  <button className="closeIcon" onClick={deleteItem}>
+                    <Close fontSize="smaller" />
+                  </button>
+                </div>
+                <div className="list-item">
+                  <li>Project Title</li>
+                  <button className="closeIcon">
+                    <Close fontSize="smaller" />
+                  </button>
+                </div>
+                <div className="list-item">
+                  <li>Project Title</li>
+                  <button className="closeIcon">
+                    <Close fontSize="smaller" />
+                  </button>
+                </div>
+              </ul>
+            </div>
+            <div className="add-btn">
+              <button className="add-new" onClick={addItem}>
+                ADD NEW
+              </button>
+            </div>
+          </div>
           <div className="project-card">
             <div className="company">
               <div className="box"></div>
@@ -46,7 +87,45 @@ function ProjectDetails() {
               </ul>
             </div>
             <div className="add-btn">
-              <button className="add-new">ADD NEW</button>
+              <button className="add-new" onClick={addItem}>
+                ADD NEW
+              </button>
+            </div>
+          </div>
+          <div className="project-card">
+            <div className="company">
+              <div className="box"></div>
+              <span className="chead">Accenture Projects</span>
+              <button className="upicon">
+                <KeyboardArrowUp />
+              </button>
+            </div>
+            <div className="project-list">
+              <ul>
+                <div className="list-item">
+                  <li>Project Title</li>
+                  <button className="closeIcon">
+                    <Close fontSize="smaller" />
+                  </button>
+                </div>
+                <div className="list-item">
+                  <li>Project Title</li>
+                  <button className="closeIcon">
+                    <Close fontSize="smaller" />
+                  </button>
+                </div>
+                <div className="list-item">
+                  <li>Project Title</li>
+                  <button className="closeIcon">
+                    <Close fontSize="smaller" />
+                  </button>
+                </div>
+              </ul>
+            </div>
+            <div className="add-btn">
+              <button className="add-new" onClick={addItem}>
+                ADD NEW
+              </button>
             </div>
           </div>
 
