@@ -40,7 +40,7 @@ function ProjectDetails() {
     const updateditems1 = items1.filter((elem, ind) => {
       return ind !== id;
     });
-    setItems(updateditems1);
+    setItems1(updateditems1);
   };
 
   return (
