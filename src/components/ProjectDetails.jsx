@@ -8,12 +8,11 @@ function ProjectDetails() {
     navigate("/congratulation");
   };
   const backPage = () => {
-    navigate("/uploads");
+    navigate("/upload");
   };
 
   const [inputData, setInputData] = useState("");
   const [items, setItems] = useState([]);
-
   const addItem = () => {
     if (!inputData) {
     } else {
@@ -21,12 +20,27 @@ function ProjectDetails() {
       setInputData("");
     }
   };
-
   const deleteItem = (id) => {
     const updateditems = items.filter((elem, ind) => {
       return ind !== id;
     });
     setItems(updateditems);
+  };
+
+  const [inputData1, setInputData1] = useState("");
+  const [items1, setItems1] = useState([]);
+  const addItem1 = () => {
+    if (!inputData1) {
+    } else {
+      setItems1([...items1, inputData1]);
+      setInputData1("");
+    }
+  };
+  const deleteItem1 = (id) => {
+    const updateditems1 = items1.filter((elem, ind) => {
+      return ind !== id;
+    });
+    setItems(updateditems1);
   };
 
   return (
@@ -57,7 +71,6 @@ function ProjectDetails() {
                 );
               })}
             </div>
-
             <div className="add-div">
               <input
                 className="add-input"
@@ -67,6 +80,42 @@ function ProjectDetails() {
                 onChange={(e) => setInputData(e.target.value)}
               />
               <button className="add-new" onClick={addItem}>
+                ADD NEW
+              </button>
+            </div>
+          </div>
+          <div className="project-card">
+            <div className="company">
+              <div className="box"></div>
+              <span className="chead">Accenture Projects</span>
+              <button className="upicon">
+                <KeyboardArrowUp />
+              </button>
+            </div>
+            <div className="project-list">
+              {items1.map((elem, ind) => {
+                return (
+                  <div className="list-item" key={ind}>
+                    <li>{elem}</li>
+                    <button
+                      className="closeIcon"
+                      onClick={() => deleteItem1(ind)}
+                    >
+                      <Close fontSize="smaller" />
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="add-div">
+              <input
+                className="add-input"
+                type="text"
+                placeholder="Enter Project Title"
+                value={inputData1}
+                onChange={(e) => setInputData1(e.target.value)}
+              />
+              <button className="add-new" onClick={addItem1}>
                 ADD NEW
               </button>
             </div>
