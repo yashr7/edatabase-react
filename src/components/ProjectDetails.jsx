@@ -1,5 +1,5 @@
 import { Close, KeyboardArrowUp } from "@mui/icons-material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function ProjectDetails() {
@@ -11,9 +11,23 @@ function ProjectDetails() {
     navigate("/uploads");
   };
 
-  const addItem = () => {};
+  const [inputData, setInputData] = useState("");
+  const [items, setItems] = useState([]);
 
-  const deleteItem = () => {};
+  const addItem = () => {
+    if (!inputData) {
+    } else {
+      setItems([...items, inputData]);
+      setInputData("");
+    }
+  };
+
+  const deleteItem = (id) => {
+    const updateditems = items.filter((elem, ind) => {
+      return ind !== id;
+    });
+    setItems(updateditems);
+  };
 
   return (
     <div>
@@ -29,100 +43,29 @@ function ProjectDetails() {
               </button>
             </div>
             <div className="project-list">
-              <ul>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon" onClick={deleteItem}>
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon">
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon">
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-              </ul>
+              {items.map((elem, ind) => {
+                return (
+                  <div className="list-item" key={ind}>
+                    <li>{elem}</li>
+                    <button
+                      className="closeIcon"
+                      onClick={() => deleteItem(ind)}
+                    >
+                      <Close fontSize="smaller" />
+                    </button>
+                  </div>
+                );
+              })}
             </div>
-            <div className="add-btn">
-              <button className="add-new" onClick={addItem}>
-                ADD NEW
-              </button>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="company">
-              <div className="box"></div>
-              <span className="chead">Accenture Projects</span>
-              <button className="upicon">
-                <KeyboardArrowUp />
-              </button>
-            </div>
-            <div className="project-list">
-              <ul>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon">
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon">
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon">
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-              </ul>
-            </div>
-            <div className="add-btn">
-              <button className="add-new" onClick={addItem}>
-                ADD NEW
-              </button>
-            </div>
-          </div>
-          <div className="project-card">
-            <div className="company">
-              <div className="box"></div>
-              <span className="chead">Accenture Projects</span>
-              <button className="upicon">
-                <KeyboardArrowUp />
-              </button>
-            </div>
-            <div className="project-list">
-              <ul>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon">
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon">
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-                <div className="list-item">
-                  <li>Project Title</li>
-                  <button className="closeIcon">
-                    <Close fontSize="smaller" />
-                  </button>
-                </div>
-              </ul>
-            </div>
-            <div className="add-btn">
+
+            <div className="add-div">
+              <input
+                className="add-input"
+                type="text"
+                placeholder="Enter Project Title"
+                value={inputData}
+                onChange={(e) => setInputData(e.target.value)}
+              />
               <button className="add-new" onClick={addItem}>
                 ADD NEW
               </button>
