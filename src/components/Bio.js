@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 function Bio() {
   const navigate = useNavigate();
-
   const nextPage = () => {
     navigate("/upload");
   };
