@@ -1,6 +1,7 @@
 import { Close, KeyboardArrowUp } from "@mui/icons-material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { data } from "./data.js";
 
 function ProjectDetails() {
   const navigate = useNavigate();
@@ -11,22 +12,24 @@ function ProjectDetails() {
     navigate("/upload");
   };
 
-  const companies = ["c1", "c2", "c3"];
+  const [inputData, setInputData] = useState([]);
 
-  const [inputData, setInputData] = useState("");
-  const [items, setItems] = useState([]);
-  const addItem = () => {
-    if (!inputData) {
+  const addItem = (index) => {
+    if (!inputData[index]) {
+      setInputData([]);
     } else {
-      setItems([...items, inputData]);
-      setInputData("");
+      data[index].items.push(inputData[index]);
+      setInputData([]);
     }
+    let x = document.getElementsByName("inputField");
+    for (const x1 of x) x1.value = "";
   };
-  const deleteItem = (id) => {
-    const updateditems = items.filter((elem, ind) => {
-      return ind !== id;
-    });
-    setItems(updateditems);
+
+  const deleteItem = (i, id) => {
+    data[i].items.splice(id, 1);
+    setInputData([]);
+    let x = document.getElementsByName("inputField");
+    for (const x1 of x) x1.value = "";
   };
 
   return (
@@ -34,24 +37,24 @@ function ProjectDetails() {
       <div class="project">
         <h2>Enter your project details</h2>
         <div class="projects">
-          {companies.map((item) => {
+          {data.map((company, i) => {
             return (
               <div className="project-card">
                 <div className="company">
                   <div className="box"></div>
-                  <span className="chead">{item}</span>
+                  <span className="chead">{company.id}</span>
                   <button className="upicon">
                     <KeyboardArrowUp />
                   </button>
                 </div>
                 <div className="project-list">
-                  {items.map((elem, ind) => {
+                  {company.items.map((elem, ind) => {
                     return (
                       <div className="list-item" key={ind}>
                         <li>{elem}</li>
                         <button
                           className="closeIcon"
-                          onClick={() => deleteItem(ind)}
+                          onClick={() => deleteItem(i, ind)}
                         >
                           <Close fontSize="smaller" />
                         </button>
@@ -63,11 +66,16 @@ function ProjectDetails() {
                   <input
                     className="add-input"
                     type="text"
+                    name="inputField"
                     placeholder="Enter Project Title"
-                    value={inputData}
-                    onChange={(e) => setInputData(e.target.value)}
+                    value={inputData[i]}
+                    onChange={(e) => {
+                      const temp = inputData;
+                      temp[i] = e.target.value;
+                      setInputData(temp);
+                    }}
                   />
-                  <button className="add-new" onClick={addItem}>
+                  <button className="add-new" onClick={() => addItem(i)}>
                     ADD NEW
                   </button>
                 </div>
